@@ -202,7 +202,7 @@
                         <button type="submit">🔍</button>
                     </form>
                 </div>
-                <div><a href="login.jsp">Login</a> / <a href="register.jsp">Register</a></div>
+                <div><a href="Login.jsp">Login</a> / <a href="Register.jsp">Register</a></div>
             </nav>
         </header>
 
