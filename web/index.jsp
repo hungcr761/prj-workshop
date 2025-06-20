@@ -202,7 +202,7 @@
                         <button type="submit">🔍</button>
                     </form>
                 </div>
-                <div><a href="Login.jsp">Login</a> / <a href="Register.jsp">Register</a></div>
+                <div><a href="login.jsp">Login</a> / <a href="register.jsp">Register</a></div>
             </nav>
         </header>
 
@@ -239,7 +239,7 @@
 
         <footer>
             <div class="container">
-                <p>&copy; 2024 Online Library. All rights reserved.</p>
+                <p>&copy; 2025 Online Library. All rights reserved.</p>
             </div>
         </footer>
     </body>
