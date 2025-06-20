@@ -133,7 +133,7 @@
                 </div>
 
                 <% 
-                    if(request.getAtribute("error")){ %>
+                    if((String) request.getAttribute("error") != null){ %>
                         <div style="color: red;">Passwords do not match!</div>
                     <% }; %>
 
