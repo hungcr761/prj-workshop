@@ -5,6 +5,8 @@
 
 package controllers;
 
+import dao.UserDAO;
+import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
