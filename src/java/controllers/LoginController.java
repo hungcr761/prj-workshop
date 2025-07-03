@@ -33,8 +33,8 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       String email=request.getParameter("txtemail");
-       String password=request.getParameter("txtpassword");
+       String email=request.getParameter("email");
+       String password=request.getParameter("password");
        if(email!=null && password!=null){
            //lay thong tin user dua vao email, password trong db
            UserDAO d=new UserDAO();
@@ -46,13 +46,13 @@ public class LoginController extends HttpServlet {
                //de lam chuc nang welcom ....: coming soon
                //luu us vao session de su dung no cho cac tinh nang: welcome, send request borrow, change profile
                HttpSession s=request.getSession();
-               s.setAttribute("loginedUser", us);               
-               
-               if(us.getRole().equalsIgnoreCase("admin")){
-                   response.sendRedirect("AdminDashboard.jsp");
-               }else{
-                    response.sendRedirect("UserDashboard.jsp");
-               }
+               s.setAttribute("loggedUser", us);               
+               response.sendRedirect("index.jsp");
+//               if(us.getRole().equalsIgnoreCase("admin")){
+//                   response.sendRedirect("AdminDashboard.jsp");
+//               }else{
+//                    response.sendRedirect("UserDashboard.jsp");
+//               }
            }
        }
     }

@@ -16,8 +16,8 @@ import mylib.DBUtils;
  * @author hungc
  */
 public class UserDAO {
-//ham nay de check email la duy nhat trong bang User
-//tra ve :record(dong/User) trung email
+//ham nay de check email/username la duy nhat trong bang User
+//tra ve :record(dong/User) trung email/username
 public User getUserByEmail(String email){
    User result=null;
    //buoc 1: ket noi
@@ -28,18 +28,20 @@ public User getUserByEmail(String email){
           //b2: viet query va execute
            String sql = "select id,name,email,password,role,status\n"
                    + "from dbo.users\n"
-                   + "where email='"+ email +"'";
-           Statement st=cn.createStatement();
-           ResultSet table= st.executeQuery(sql);
+                   + "where email= ? OR name= ?";
+           PreparedStatement pst=cn.prepareStatement(sql);
+           pst.setString(0, email);
+           pst.setString(1, email);
+           ResultSet table= pst.executeQuery(sql);
           //bc3:lay data trong bien table
            if(table!=null && table.next()){
               int id=table.getInt("id");
-              String name=table.getString("name");
-              //String email=table.getString("email");
+              String Uname=table.getString("name");
+              String Uemail=table.getString("email");
               String password=table.getString("password");
               String role=table.getString("role");
               String status=table.getString("status");
-              result=new User(id, name, email, password, role, status);
+              result=new User(id, Uname, Uemail, password, role, status);
            }
        }
    }catch(Exception e){
