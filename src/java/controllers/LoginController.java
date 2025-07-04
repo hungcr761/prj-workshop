@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
            User us=d.getUser(email, password);
            if(us==null || !us.getStatus().equalsIgnoreCase("active")){
                request.setAttribute("ERROR", "email or password is invalid");
-               request.getRequestDispatcher("Login.jsp").forward(request, response);
+               request.getRequestDispatcher("login.jsp").forward(request, response);
            }else{
                //de lam chuc nang welcom ....: coming soon
                //luu us vao session de su dung no cho cac tinh nang: welcome, send request borrow, change profile

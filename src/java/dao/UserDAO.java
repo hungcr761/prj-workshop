@@ -87,20 +87,19 @@ public int insertNewUser(String name,String email,String password){
     }
 
     //ham nay de lay thong tin user dua vao email va password
- public User getUser(String email, String password) {
+ public User getUser(String email, String password) { //for login
         User result = null;
-        //buoc 1: ket noi
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                //b2: viet query va execute
                 String sql = "select id,name,email,password,role,status\n"
                         + "from dbo.users\n"
-                        + "where email=? and password=?  COLLATE Latin1_General_CS_AS";
+                        + "where email=? OR name= ? and password=?  COLLATE Latin1_General_CS_AS";
                 PreparedStatement st = cn.prepareStatement(sql);
                 st.setString(1, email);
-                st.setString(2, password);
+                st.setString(2, email);
+                st.setString(3, password);
 
                 ResultSet table = st.executeQuery();
                 //bc3:lay data trong bien table
