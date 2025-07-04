@@ -18,7 +18,7 @@ import mylib.DBUtils;
 public class UserDAO {
 //ham nay de check email/username la duy nhat trong bang User
 //tra ve :record(dong/User) trung email/username
-public User getUserByEmail(String email){
+public User getUserByEmail(String email, String username){ //for register
    User result=null;
    //buoc 1: ket noi
    Connection cn=null;
@@ -30,9 +30,9 @@ public User getUserByEmail(String email){
                    + "from dbo.users\n"
                    + "where email= ? OR name= ?";
            PreparedStatement pst=cn.prepareStatement(sql);
-           pst.setString(0, email);
            pst.setString(1, email);
-           ResultSet table= pst.executeQuery(sql);
+           pst.setString(2, username);
+           ResultSet table= pst.executeQuery();
           //bc3:lay data trong bien table
            if(table!=null && table.next()){
               int id=table.getInt("id");
@@ -87,7 +87,7 @@ public int insertNewUser(String name,String email,String password){
     }
 
     //ham nay de lay thong tin user dua vao email va password
- public User getUser(String email, String password) { //for login
+public User getUser(String email, String password) { //for login
         User result = null;
         Connection cn = null;
         try {
@@ -95,7 +95,7 @@ public int insertNewUser(String name,String email,String password){
             if (cn != null) {
                 String sql = "select id,name,email,password,role,status\n"
                         + "from dbo.users\n"
-                        + "where email=? OR name= ? and password=?  COLLATE Latin1_General_CS_AS";
+                        + "WHERE (email=? OR name=?) AND password=? COLLATE Latin1_General_CS_AS";
                 PreparedStatement st = cn.prepareStatement(sql);
                 st.setString(1, email);
                 st.setString(2, email);

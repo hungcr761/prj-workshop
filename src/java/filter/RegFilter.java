@@ -19,7 +19,7 @@ import jakarta.servlet.ServletResponse;
  *
  * @author hungc
  */
-public class Filter1 implements Filter {
+public class RegFilter implements Filter {
     
     private static final boolean debug = true;
 
@@ -28,13 +28,13 @@ public class Filter1 implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public Filter1() {
+    public RegFilter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter:DoBeforeProcessing");
+            log("RegFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -62,7 +62,7 @@ public class Filter1 implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter:DoAfterProcessing");
+            log("RegFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -98,14 +98,13 @@ public class Filter1 implements Filter {
             throws IOException, ServletException {
         
         if (debug) {
-            log("Filter:doFilter()");
+            log("RegFilter:doFilter()");
         }
         
         doBeforeProcessing(request, response);
         
         Throwable problem = null;
         try {
-            //int a = request.getParameter("a");
             chain.doFilter(request, response);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
@@ -159,7 +158,7 @@ public class Filter1 implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("Filter:Initializing filter");
+                log("RegFilter:Initializing filter");
             }
         }
     }
@@ -170,9 +169,9 @@ public class Filter1 implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("Filter()");
+            return ("RegFilter()");
         }
-        StringBuffer sb = new StringBuffer("Filter(");
+        StringBuffer sb = new StringBuffer("RegFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

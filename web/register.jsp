@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +23,7 @@
             body {
                 font-family: Arial, sans-serif;
                 background: #ecf0f1;
+                overflow-y: hidden;
             }
 
             .container {
@@ -107,50 +109,35 @@
         </header>
         <div class="container">
             <h2>📚 Register</h2>
-            <form method="POST">
+            <form method="POST" action="RegisterController">
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
+                    <input type="text" name="username" value="${username}">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" name="email" value="${email}" required>
                 </div>
-                <% 
+                <%
                     String username = request.getParameter("username");
                     String email = request.getParameter("email");
-                    if (username == null || username.trim().isEmpty()){
+                    if (username == null || username.trim().isEmpty()) {
                         username = email;
                     }
                 %>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" name="password" required>
                 </div>
                 <div class="form-group">
                     <label for="cpassword">Confirm password:</label>
-                    <input type="password" id="cpassword" name="cpassword" required>
+                    <input type="password" name="cpassword" required>
                 </div>
-
-                <% 
-                    if((String) request.getAttribute("error") != null){ %>
-                        <div style="color: red;">Passwords do not match!</div>
-                    <% }; %>
-
+                <c:if test="${not empty error}">
+                    <p style="color: red">${error}</p> 
+                </c:if>
                 <button type="submit">Register</button>
             </form>
-            <%
-//                String password = request.getParameter("password");
-//                String cpassword = request.getParameter("cpassword");
-//
-//                if (password != null && cpassword != null) {
-//                    if (!password.equals(cpassword)) {
-//                        response.sendRedirect("register.jsp?error=mismatch");
-//                        return;
-//                    }
-//                    response.sendRedirect("success.jsp");
-//                }
-            %>
             <div class="links">
                 <p>Already have an account?<a href="login.jsp"> Log in</a><br></p>
                 <a href="index.jsp">← Back to Home</a>

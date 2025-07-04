@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
            UserDAO d=new UserDAO();
            User us=d.getUser(email, password);
            if(us==null || !us.getStatus().equalsIgnoreCase("active")){
-               request.setAttribute("ERROR", "email or password is invalid");
+               request.setAttribute("error", "email or password is invalid");
                request.getRequestDispatcher("login.jsp").forward(request, response);
            }else{
                //de lam chuc nang welcom ....: coming soon
