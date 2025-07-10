@@ -131,13 +131,13 @@ public class BookDAO {
         return b;
     }
 
-    public ArrayList<Book> getAllBook() {// for index
+    public ArrayList<Book> get3Book() {// for index
         ArrayList<Book> result = new ArrayList<>();
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "SELECT TOP (12) [id]\n"
+                String sql = "SELECT TOP (3) [id]\n"
                         + "      ,[title]\n"
                         + "      ,[author]\n"
                         + "      ,[isbn]\n"

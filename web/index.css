@@ -207,14 +207,30 @@ nav {
     width: 125px;
     height: 170px;
     border-radius: 3px;
-    margin-left: 20px;
-    margin-top: 10px;
+    margin: 10px auto 0;
 }
 
 .book-status {
     padding: 3px 8px;
     border-radius: 3px;
     font-size: 0.8rem;
+}
+
+.borrow-btn {
+    margin-top: 10px;
+    padding: 8px 20px;            
+    background-color: #0376b8;   
+    color: white;                 
+    border: none;                
+    border-radius: 5px;             
+    font-size: 14px;               
+    font-weight: bold;              
+    cursor: pointer;                
+    text-align: center;            
+}
+
+.borrow-btn:hover {
+    background-color: #025a8d;     
 }
 
 .available {
