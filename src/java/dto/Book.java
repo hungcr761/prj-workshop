@@ -33,16 +33,17 @@ public class Book {
         this.url = url;
     }
 
-    public Book(int id, String title, String author, String isbn, String category, int published_year, int total_copies, int available_copies, String status) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.category = category;
-        this.published_year = published_year;
-        this.total_copies = total_copies;
-        this.available_copies = available_copies;
-        this.status = status;
+    public Book(){
+        id=0;
+        title="";
+        author="";
+        isbn="";
+        category="";
+        published_year=0;
+        total_copies=0;
+        available_copies=0;
+        status="active";
+        url="";
     }
 
     public int getId() {

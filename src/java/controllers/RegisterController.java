@@ -43,7 +43,10 @@ public class RegisterController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String cPassword = request.getParameter("cpassword");
-
+        if (username == null || username.trim().isEmpty()) {
+            username = email.substring(0, email.indexOf("@"));//extract part before @ 
+       }
+        
         if (password != null && !password.equals(cPassword)) { //check password
             request.setAttribute("error", "Passwords do not match!");
             request.setAttribute("username", username);

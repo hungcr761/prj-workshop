@@ -16,8 +16,7 @@ import mylib.DBUtils;
  * @author hungc
  */
 public class UserDAO {
-//ham nay de check email/username la duy nhat trong bang User
-//tra ve :record(dong/User) trung email/username
+
 public User getUserByEmail(String email, String username){ //for register
    User result=null;
    //buoc 1: ket noi

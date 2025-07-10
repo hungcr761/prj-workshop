@@ -34,12 +34,14 @@ public class MainController extends HttpServlet {
                  url="LogoutController";
                  break;
              case "search":
-                 url="SearchController";
+                 url="SearchBookController";
                  break;
              case "delete":
                  url="DeleteController";
                  break;
-                 
+             case "register":
+                 url="RegisterController";
+                 break;
          }
      }finally{
          try {

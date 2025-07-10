@@ -109,7 +109,8 @@
         </header>
         <div class="container">
             <h2>📚 Register</h2>
-            <form method="POST" action="RegisterController">
+            <form method="POST" action="MainController">
+<!--                <input type="hidden" name="action" value="register">-->
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" name="username" value="${username}">
@@ -118,13 +119,6 @@
                     <label for="email">Email:</label>
                     <input type="text" name="email" value="${email}" required>
                 </div>
-                <%
-                    String username = request.getParameter("username");
-                    String email = request.getParameter("email");
-                    if (username == null || username.trim().isEmpty()) {
-                        username = email;
-                    }
-                %>
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" name="password" required>
@@ -136,7 +130,7 @@
                 <c:if test="${not empty error}">
                     <p style="color: red">${error}</p> 
                 </c:if>
-                <button type="submit">Register</button>
+                <button type="submit" name="action" value="register">Register</button>
             </form>
             <div class="links">
                 <p>Already have an account?<a href="login.jsp"> Log in</a><br></p>
