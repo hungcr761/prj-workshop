@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class MainController extends HttpServlet {
    
    public void processRequest(HttpServletRequest request, HttpServletResponse response){
-    String url="Login.jsp"; 
+    String url=""; 
     try{
          String act=request.getParameter("action");
          if(act==null) act="home";

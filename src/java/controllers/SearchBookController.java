@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controllers;
 
 import dao.BookDAO;
@@ -20,45 +19,44 @@ import java.util.ArrayList;
  * @author hungc
  */
 public class SearchBookController extends HttpServlet {
-   
-   
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String search=request.getParameter("search");
-        String filter=request.getParameter("filter");
-        PrintWriter out=response.getWriter();
+            throws ServletException, IOException {
+        String search = request.getParameter("search");
+        String filter = request.getParameter("filter");
+        PrintWriter out = response.getWriter();
         response.setCharacterEncoding("utf-8");
-        if(search!=null && !search.isEmpty()){
-            BookDAO d=new BookDAO();
-            ArrayList<Book> result=d.getBooksByFilter(search, filter);
-            if(result.isEmpty()){
+        if (search != null && !search.isEmpty()) {
+            BookDAO d = new BookDAO();
+            ArrayList<Book> result = d.getBooksByFilter(search, filter);
+            request.setAttribute("search", search);
+            request.setAttribute("filter", filter);
+            if (result.isEmpty()) {
                 //cach 1 de giu title va xuat no ra trang index.jsp
                 //request.setAttribute("FINDTITLE",title);
-                request.setAttribute("msg","Book not found");
+                request.setAttribute("msg", "Book not found");
                 //request.getRequestDispatcher("index.jsp?txtsearch="+title);
                 request.getRequestDispatcher("search.jsp").forward(request, response);
+            } else {
+                request.setAttribute("result", result);
+                request.getRequestDispatcher("search.jsp").forward(request, response);
             }
-            else{
-               request.setAttribute("RESULT",result);
-               request.getRequestDispatcher("search.jsp").forward(request, response);
-            }
-        }else{
-           request.setAttribute("MSG","no data");
-           request.getRequestDispatcher("index.jsp");
+        } else {
+            request.setAttribute("msg", "no data");
+            request.getRequestDispatcher("search.jsp");
         }
-    } 
-
-  
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-       
     }
 
-    /** 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

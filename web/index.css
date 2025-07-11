@@ -16,6 +16,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
 }
 
 .container {
@@ -217,20 +221,32 @@ nav {
 }
 
 .borrow-btn {
-    margin-top: 10px;
-    padding: 8px 20px;            
-    background-color: #0376b8;   
-    color: white;                 
-    border: none;                
-    border-radius: 5px;             
-    font-size: 14px;               
-    font-weight: bold;              
-    cursor: pointer;                
-    text-align: center;            
+    margin-top: 30px;
+    padding: 8px 20px;
+    background-color: #0376b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
 }
 
 .borrow-btn:hover {
-    background-color: #025a8d;     
+    background-color: #025a8d;
+}
+
+.book-meta h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    display: block;
+}
+
+.book-meta h3:hover{
+
 }
 
 .available {

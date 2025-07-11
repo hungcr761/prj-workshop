@@ -27,12 +27,13 @@
                 <div class="search-bar">
                     <form action="MainController" method="GET">
                         <select class="dropbox" name="filter">
-                            <option value="all" >All</option>
-                            <option value="title" >Title</option>
-                            <option value="author" >Author</option>
-                            <option value="category" >Category</option>>
+                            <-<!-- ?=true :=false -->
+                            <option value="all" ${filter == 'all' ? 'selected' : ''}>All</option>
+                            <option value="title" ${filter == 'title' ? 'selected' : ''}>Title</option>
+                            <option value="author" ${filter == 'author' ? 'selected' : ''}>Author</option>
+                            <option value="category" ${filter == 'category' ? 'selected' : ''}>Category</option>
                         </select>
-                        <input type="text" name="search" placeholder="Search" required>
+                        <input type="text" name="search" placeholder="Search" value="${search}" required>
                         <button type="submit" name="action" value="search">🔍</button>
                     </form>
                 </div>
@@ -51,31 +52,33 @@
             </nav>
         </header>
 
-        <main>
-            <section class="hero welcome">
-                <div class="container">
-                    <h1>Welcome to Our Online Library</h1>
-                    <p>Discover thousands of books at your fingertips</p>
-                </div>
-            </section>
-
+        <main style="height: 100%; flex: 1;">
             <section class="container">
-                <h2 style="padding-top: 10px">📖 Recommended</h2>
-                <div class="books-grid">
-                    <div class="book-card">
-                        <div>
-                            <div class="book-meta">
-                                <h3>title</h3>
-                                <strong>Author:</strong><br>
-                                <strong>Category:</strong> <br>
-                                <strong>Year:</strong>
+                <c:if test="${not empty msg}">
+                    <h2 style="padding: 20px 0px">Book not found</h2>
+                </c:if>
+                <c:if test="${empty msg}">
+                    <h2 style="padding: 20px 0px">Search books</h2>
+                    <div class="books-grid">
+                        <c:forEach var="book" items="${result}">
+                            <div class="book-card">
+                                <div>
+                                    <div class="book-meta">
+                                        <h3 title="${book.title}">${book.title}</h3>
+                                        <strong>Author:</strong>${book.author}<br>
+                                        <strong>Category:</strong>${book.category}<br>
+                                        <strong>Year:</strong> ${book.published_year}
+                                    </div>
+                                    <c:if test="${not empty sessionScope.loggedUser}">
+                                        <p style="margin-top: 10px;">Copies Available: ${book.available_copies}</p>
+                                        <button onclick="" class="borrow-btn">Borrow Book</button>
+                                    </c:if>
+                                </div>
+                                <img src="${book.url}" alt="book cover">
                             </div>
-                            <p style="margin-top: 10px;">...</p>
-                            <a href="book_detail.jsp?id=" style="display: inline-block; margin-top: 10px; color: #3498db;">View Details</a>
-                        </div>
-                        <img src="image/GoT.jpg" alt="book cover">
+                        </c:forEach>
                     </div>
-                </div>
+                </c:if>
             </section>
         </main>
 
