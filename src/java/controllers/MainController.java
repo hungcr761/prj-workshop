@@ -42,6 +42,9 @@ public class MainController extends HttpServlet {
              case "register":
                  url="RegisterController";
                  break;
+             case "history":
+                 url="BookHistoryController";
+                 break;
          }
      }finally{
          try {

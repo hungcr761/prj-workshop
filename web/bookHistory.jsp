@@ -1,6 +1,6 @@
 <%-- 
-    Document   : search
-    Created on : Jul 7, 2025, 3:06:27 PM
+    Document   : myBooks
+    Created on : Jul 11, 2025, 4:00:06 PM
     Author     : hungc
 --%>
 
@@ -28,39 +28,34 @@
                     <form action="MainController" method="GET">
                         <select class="dropbox" name="filter">
                             <-<!-- ?=true :=false -->
-                            <option value="all" ${filter == 'all' ? 'selected' : ''}>All</option>
-                            <option value="title" ${filter == 'title' ? 'selected' : ''}>Title</option>
-                            <option value="author" ${filter == 'author' ? 'selected' : ''}>Author</option>
-                            <option value="category" ${filter == 'category' ? 'selected' : ''}>Category</option>
+                            <option value="all">All</option>
+                            <option value="title">Title</option>
+                            <option value="author">Author</option>
+                            <option value="category">Category</option>
                         </select>
-                        <input type="text" name="search" placeholder="Search" value="${search}" required>
+                        <input type="text" name="search" placeholder="Search" required>
                         <button type="submit" name="action" value="search">🔍</button>
                     </form>
                 </div>
-                <c:if test="${empty sessionScope.loggedUser}">
-                    <div class="log_reg"><a href="login.jsp">Login</a> / <a href="register.jsp">Register</a></div>
-                </c:if>
-                <c:if test="${not empty sessionScope.loggedUser}">
-                    <div class="dropdown">
-                        <button class="dropdown-btn" style="font-weight: bold">👤 ${sessionScope.loggedUser.name}</button>
-                        <div class="dropdown-content">
-                            <a href="profile.jsp">View Profile</a>
-                            <a href="bookHistory.jsp">Book History</a>
-                            <a href="LogoutController">Logout</a>
-                        </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn" style="font-weight: bold">👤 ${sessionScope.loggedUser.name}</button>
+                    <div class="dropdown-content">
+                        <a href="profile.jsp">View Profile</a>
+                        <a href="myBooks.jsp">Book History</a>
+                        <a href="LogoutController">Logout</a>
                     </div>
-                </c:if>
+                </div>
             </nav>
         </header>
 
         <main style="height: 100%; flex: 1;">
             <section class="container">
                 <c:if test="${not empty msg}">
-                    <h2 style="padding: 20px 0px">Book not found</h2>
+                    <h2 style="padding: 20px 0px">You haven't borrow any book!</h2>
                 </c:if>
                 <c:if test="${empty msg}">
-                    <h2 style="padding: 20px 0px">Search books</h2>
-                    <div class="books-grid"">
+                    <h2 style="padding: 20px 0px">Books borrowed </h2>
+                    <div class="books-grid" style="grid-template-columns: repeat(1, 1fr);">
                         <c:forEach var="book" items="${result}">
                             <div class="book-card">
                                 <div>
@@ -90,3 +85,4 @@
         </footer>
     </body>
 </html>
+

@@ -28,6 +28,10 @@
         <servlet-name>SearchBookController</servlet-name>
         <servlet-class>controllers.SearchBookController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookHistoryController</servlet-name>
+        <servlet-class>controllers.BookHistoryController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>SearchBookController</servlet-name>
         <url-pattern>/SearchBookController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookHistoryController</servlet-name>
+        <url-pattern>/BookHistoryController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
