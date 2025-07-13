@@ -30,7 +30,7 @@
     </servlet>
     <servlet>
         <servlet-name>BookHistoryController</servlet-name>
-        <servlet-class>controllers.BookHistoryController</servlet-class>
+        <servlet-class>controllers.BookRecordController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>

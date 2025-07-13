@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author hungc
  */
-public class BookHistoryController extends HttpServlet {
+public class BookRecordController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

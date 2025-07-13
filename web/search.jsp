@@ -23,7 +23,7 @@
                 <div class="logo">
                     <a href="MainController">📚 Online Library </a>
                 </div>
-                <div class="m_book"><a href="borrow_history.jsp">My Books</a></div>
+                <div class="m_book"><a href="MainController?action=record">My Books</a></div>
                 <div class="search-bar">
                     <form action="MainController" method="GET">
                         <select class="dropbox" name="filter">
@@ -45,8 +45,8 @@
                         <button class="dropdown-btn" style="font-weight: bold">👤 ${sessionScope.loggedUser.name}</button>
                         <div class="dropdown-content">
                             <a href="profile.jsp">View Profile</a>
-                            <a href="bookHistory.jsp">Book History</a>
-                            <a href="LogoutController">Logout</a>
+                            <a href="MainController?action=record">Book Record</a>
+                            <a href="MainController?action=logout">Logout</a>
                         </div>
                     </div>
                 </c:if>

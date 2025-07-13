@@ -43,7 +43,7 @@ public class MainController extends HttpServlet {
                  url="RegisterController";
                  break;
              case "history":
-                 url="BookHistoryController";
+                 url="BookRecordController";
                  break;
          }
      }finally{
