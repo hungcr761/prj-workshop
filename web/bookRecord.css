@@ -3,7 +3,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
 */
 /* 
-    Created on : Jul 4, 2025, 1:58:44 PM
+    Created on : Jul 13, 2025, 10:46:59 AM
     Author     : hungc
 */
 
@@ -186,39 +186,45 @@ nav {
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 10px;
 }
 
-.book-card {
-    display: flex;
-    border: 1px solid #ddd;
-    padding: 15px;
-    background: white;
-    border-radius: 5px;
+.borrow-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  background: #fff;
 }
 
-.book-card h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
+.borrow-card img {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
-.book-meta {
-    flex: 1;
+.borrow-details h3 {
+  margin: 0;
+  color: #2c3e50;
 }
 
-.book-card img{
-    width: 125px;
-    height: 170px;
-    border-radius: 3px;
-    margin: 10px auto 0;
+.borrow-details p {
+  margin: 4px 0;
+  color: #555;
+  line-height: 1.4;
 }
 
-.book-status {
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 0.8rem;
+.borrow-status {
+  font-weight: bold;
+  color: #e74c3c;
 }
+
 
 .borrow-btn {
     margin-top: 30px;
@@ -235,49 +241,4 @@ nav {
 
 .borrow-btn:hover {
     background-color: #025a8d;
-}
-
-.book-meta h3 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
-    display: block;
-}
-
-.book-meta h3:hover{
-
-}
-
-.available {
-    background: #d4edda;
-    color: #155724;
-}
-
-.unavailable {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-.new-badge {
-    background: #28a745;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.7rem;
-}
-
-
-.content{
-    padding-top: 80px;
-    border: 10px #28a745 solid;
-}
-
-footer {
-    background: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    height: 92px;
 }

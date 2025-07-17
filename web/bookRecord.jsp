@@ -4,7 +4,9 @@
     Author     : hungc
 --%>
 
-<%@page import="dto.Book"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.resource.cci.Record"%>
+<%@page import="dto.Book,dao.BookDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page  import="dto.User" %>
@@ -14,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Online Library - Home</title>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="bookRecord.css">
     </head>
 
     <body>
@@ -55,24 +57,21 @@
                 </c:if>
                 <c:if test="${empty msg}">
                     <h2 style="padding: 20px 0px">Books borrowed </h2>
-                    <div class="books-grid" style="grid-template-columns: repeat(1, 1fr);">
-                        <c:forEach var="book" items="${result}">
-                            <div class="book-card">
-                                <div>
-                                    <div class="book-meta">
-                                        <h3 title="${book.title}">${book.title}</h3>
-                                        <strong>Author:</strong>${book.author}<br>
-                                        <strong>Category:</strong>${book.category}<br>
-                                        <strong>Year:</strong> ${book.published_year}
-                                    </div>
-                                    <c:if test="${not empty sessionScope.loggedUser}">
-                                        <p style="margin-top: 10px;">Copies Available: ${book.available_copies}</p>
-                                        <button onclick="" class="borrow-btn">Borrow Book</button>
-                                    </c:if>
+                    <div class="books-grid"">
+                        <c:forEach var="record" items="${bRecord}">
+                            <div class="borrow-card">
+                                <img src="${record.url}" alt="book cover">
+                                <div class="borrow-details">
+                                    <h3>${record.title}</h3>
+                                    <p>By: ${record.author}</p>
+                                    <p>Borrow Date: ${record.borrowDate}</p>
+                                    <p>Due Date: ${record.dueDate}</p>
+                                    <p>Return Date: ${record.returnDate != null ? record.returnDate : "Not returned"}</p>
+                                    <p class="borrow-status">Status: ${record.status}</p>
                                 </div>
-                                <img src="${book.url}" alt="book cover">
                             </div>
                         </c:forEach>
+
                     </div>
                 </c:if>
             </section>

@@ -29,7 +29,7 @@
         <servlet-class>controllers.SearchBookController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BookHistoryController</servlet-name>
+        <servlet-name>BookRecordController</servlet-name>
         <servlet-class>controllers.BookRecordController</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -53,8 +53,8 @@
         <url-pattern>/SearchBookController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BookHistoryController</servlet-name>
-        <url-pattern>/BookHistoryController</url-pattern>
+        <servlet-name>BookRecordController</servlet-name>
+        <url-pattern>/BookRecordController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
