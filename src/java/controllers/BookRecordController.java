@@ -5,6 +5,8 @@
 
 package controllers;
 
+import dto.*;
+import dao.BorrowDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,12 +32,16 @@ public class BookRecordController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-           String id=request.getParameter("txtid");
            HttpSession session=request.getSession();           
            if( session.getAttribute("loggedUser")==null){
                request.setAttribute("error", "Please login first");
                request.getRequestDispatcher("login.jsp").forward(request, response);
            }
+           int uID=((User) session.getAttribute("loggedUser")).getId();
+           BorrowDAO b=new BorrowDAO();
+           ArrayList<BorrowRecord> bRecord=b.getBookRecord(uID);
+           request.setAttribute("bRecord", bRecord);
+           request.getRequestDispatcher("bookRecord.jsp").forward(request, response);
         }catch (Exception e){
             e.printStackTrace();
         }

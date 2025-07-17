@@ -11,22 +11,29 @@ import java.sql.Date;
  * @author hungc
  */
 public class BorrowRecord {
+
     private int uID;
     private int bID;
     private Date borrowDate;
     private Date dueDate;
     private Date returnDate;
     private String status;
+    private String title;
+    private String author;
+    private String url;
 
-    public BorrowRecord(int uID, int bID, Date borrowDate, Date dueDate, Date returnDate, String status) {
+    public BorrowRecord(int uID, int bID, Date borrowDate, Date dueDate, Date returnDate, String status, String title, String author, String url) {
         this.uID = uID;
         this.bID = bID;
         this.borrowDate = borrowDate;
         this.dueDate = dueDate;
         this.returnDate = returnDate;
         this.status = status;
+        this.title = title;
+        this.author = author;
+        this.url=url;
     }
-    
+
     public BorrowRecord() {
         uID = 0;
         bID = 0;
@@ -34,6 +41,33 @@ public class BorrowRecord {
         dueDate = null;
         returnDate = null;
         status = "";
+        title = "";
+        author = "";
+        url="";
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public int getuID() {
@@ -83,5 +117,5 @@ public class BorrowRecord {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }
