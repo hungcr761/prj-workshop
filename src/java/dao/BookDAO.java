@@ -147,7 +147,8 @@ public class BookDAO {
                         + "      ,[available_copies]\n"
                         + "      ,[status]\n"
                         + "      ,[url]\n"
-                        + "  FROM [dbo].[books]\n";
+                        + "  FROM [dbo].[books]\n"
+                        + "ORDER BY [id] DESC";
                 PreparedStatement st = cn.prepareStatement(sql);
                 ResultSet table = st.executeQuery();
                 if (table != null) {

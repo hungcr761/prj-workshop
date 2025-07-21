@@ -18,7 +18,7 @@ import mylib.DBUtils;
  */
 public class BorrowDAO {
 
-    public ArrayList<BorrowRecord> getBookRecord(int uID) { //for register
+    public ArrayList<BorrowRecord> getBookRecord(int uID) { 
         ArrayList<BorrowRecord> list = new ArrayList<>();
         //buoc 1: ket noi
         Connection cn = null;
